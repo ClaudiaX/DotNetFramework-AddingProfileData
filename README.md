@@ -5,7 +5,7 @@
 1. Change model  
    File: Models -> IdentityModels -> ApplicationUser class  
    Add attribute  
-   [check this link: line 13 - 15](http://github.com/claudiax/addingprofiledata/blob/main/addingprofiledata/Models/IdentityModels.cs)
+   [check this link: line 13 - 15](https://github.com/ClaudiaX/DotNetFramework-AddingProfileData/blob/main/ChangeUserProfileSample/Models/IdentityModels.cs)
 
    ```cs
    public class ApplicationUser : IdentityUser
@@ -30,7 +30,7 @@
 - Add View Model  
    File: Model -> AccountViewModels  
    Add class ProfileViewModel inside namespace  
-   [check this link: line 114 - 132](http://github.com/claudiax/addingprofiledata/blob/main/addingprofiledata/Models/AccountViewModels.cs)
+   [check this link: line 114 - 132](https://github.com/ClaudiaX/DotNetFramework-AddingProfileData/blob/main/ChangeUserProfileSample/Models/AccountViewModels.cs)
 
   ```cs
   public class ProfileViewModel
@@ -58,7 +58,7 @@
 
 1.  Add link  
     File: Views -> Manage -> Index  
-    [check this link: line 13 & 14](http://github.com/claudiax/addingprofiledata/blob/main/addingprofiledata/Views/Manage/Index.cshtml)
+    [check this link: line 13 & 14](https://github.com/ClaudiaX/DotNetFramework-AddingProfileData/blob/main/ChangeUserProfileSample/Views/Manage/Index.cshtml)
 
     ```html
     <dt>Profile</dt>
@@ -67,7 +67,7 @@
 
 2.  View profile  
      Create file: Views -> Manage -> ViewUserProfile.cshtml  
-     [check this link for code](http://github.com/claudiax/addingprofiledata/blob/main/addingprofiledata/Views/Manage/ViewUserProfile.cshtml)
+     [check this link for code](https://github.com/ClaudiaX/DotNetFramework-AddingProfileData/blob/main/ChangeUserProfileSample/Views/Manage/ViewUserProfile.cshtml)
 
     ```html
     @model ChangeUserProfileSample.Models.ProfileViewModel @{ ViewBag.Title =
@@ -94,7 +94,7 @@
 3.  Edit profile  
     Create file: Views -> Manage -> EditUserProfile.cshtml  
     Remember to use date time picker  
-    [check this link for code](http://github.com/claudiax/addingprofiledata/blob/main/addingprofiledata/Views/Manage/EditUserProfile.cshtml)
+    [check this link for code](https://github.com/ClaudiaX/DotNetFramework-AddingProfileData/blob/main/ChangeUserProfileSample/Views/Manage/EditUserProfile.cshtml)
 
 ## Controller
 
@@ -102,7 +102,7 @@ File: Controllers -> ManageController
 
 1. View User Profile  
    Add Method (This is a GET method, return view)  
-    [check this link: line 326 - 346](http://github.com/claudiax/addingprofiledata/blob/main/addingprofiledata/Controllers/ManageController.cs)
+    [check this link: line 326 - 346](https://github.com/ClaudiaX/DotNetFramework-AddingProfileData/blob/main/ChangeUserProfileSample/Controllers/ManageController.cs)
 
    ```cs
    //
