@@ -1,0 +1,21 @@
+﻿@model ChangeUserProfileSample.Models.ProfileViewModel 
+@{
+    ViewBag.Title = "User Profile"; 
+}
+
+<h2>User Profile</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+        <dd>@Html.DisplayFor(model => model.Email)</dd>
+        <dt>@Html.DisplayNameFor(model => model.Dob)</dt>
+        <dd>@Html.DisplayFor(model => model.Dob)</dd>
+        <dt>@Html.DisplayNameFor(model => model.Height)</dt>
+        <dd>@Html.DisplayFor(model => model.Height)</dd>
+        <dt>@Html.DisplayNameFor(model => model.Weight)</dt>
+        <dd>@Html.DisplayFor(model => model.Weight)</dd>
+    </dl>
+</div>
+
+<p>@Html.ActionLink("Edit", "EditUserProfile", "Manage")</p>

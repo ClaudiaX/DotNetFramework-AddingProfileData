@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ChangeUserProfileSample.Models
@@ -108,5 +109,25 @@ namespace ChangeUserProfileSample.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class ProfileViewModel
+    {
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Date of birth")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
+        public DateTime Dob { get; set; }
+
+        [Required]
+        [Display(Name = "Height (m)")]
+        [RegularExpression(@"^[0-2]+(\.\d{1,2})$", ErrorMessage = "Number with 2 decimal places.")]
+        public decimal Height { get; set; }
+
+        [Required]
+        [Display(Name = "Weight (kg)")]
+        [RegularExpression(@"\d+(\.\d{1,2})?", ErrorMessage = "Number with 2 decimal places.")]
+        public decimal Weight { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ChangeUserProfileSample.Models;
+using System.Data.Entity;
 
 namespace ChangeUserProfileSample.Controllers
 {
@@ -320,6 +321,79 @@ namespace ChangeUserProfileSample.Controllers
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
+        }
+
+        //
+        // GET: /Manage/ViewUserProfile
+        public async Task<ActionResult> ViewUserProfile()
+        {
+            try
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var model = new ProfileViewModel { 
+                    Email = user.Email,
+                    Dob = user.Dob,
+                    Height = user.Height,
+                    Weight = user.Weight
+                };
+                return View(model);
+            }
+            catch (Exception exception)
+            {
+                ModelState.AddModelError("Error", exception.Message);
+                return HttpNotFound();
+            }
+        }
+
+        //
+        // GET: /Manage/EditUserProfile
+        public async Task<ActionResult> EditUserProfile()
+        {
+            try
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var model = new ProfileViewModel
+                {
+                    Email = user.Email,
+                    Dob = user.Dob,
+                    Height = user.Height,
+                    Weight = user.Weight
+                };
+                return View(model);
+            }
+            catch (Exception exception)
+            {
+                ModelState.AddModelError("Error", exception.Message);
+                return HttpNotFound();
+            }
+        }
+
+        //
+        // POST: /Manage/EditUserProfile
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditUserProfile(ProfileViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            try
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                user.Dob = model.Dob;
+                user.Height = model.Height;
+                user.Weight = model.Weight;
+                var result = await UserManager.UpdateAsync(user);
+                if (!result.Succeeded)
+                    AddErrors(result);
+                return RedirectToAction("ViewUserProfile");
+            }
+            catch(Exception exception)
+            {
+                ModelState.AddModelError("Error", exception.Message);
+                return View(model);
+            }
         }
 
         protected override void Dispose(bool disposing)
